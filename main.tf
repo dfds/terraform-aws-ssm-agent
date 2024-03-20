@@ -9,13 +9,6 @@ resource "aws_instance" "this" {
   subnet_id            = data.aws_subnet.selected.id
   iam_instance_profile = data.aws_iam_role.selected.name
   tags = {
-    Name = "ssm-tunnel"
+    Name = var.name
   }
 }
-
-
-#TODO:
-# Auto-assign public IP: disable
-#Security group: Select existing security group (ssm-tunnel)
-#Expand advanced details and select the following:
-#IAM Instance Profile: ssm-tunnel
