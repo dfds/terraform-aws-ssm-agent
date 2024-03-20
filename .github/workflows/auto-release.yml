@@ -1,0 +1,35 @@
+name: Auto release on merge
+
+on:
+  push:
+    branches: [master, main]
+    paths-ignore:
+      - .github/**
+      - "**/*.md"
+      - .gitignore
+      - .pre-commit-config.yaml
+      - .tflint.hcl
+      - LICENSE
+      - renovate.json
+      - examples/**
+      - scripts/**
+      - tests/**
+
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - id: release
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: patch
+          tag_prefix: ""
+
+      - name: Dispatch to blueprints
+        run: |
+          curl -X POST https://api.github.com/repos/dfds/infrastructure-blueprints/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.AUTH_TOKEN }} \
+          --data '{"event_type": "trigger-workflow", "client_payload": { "release_tag": "${{ steps.release.outputs.tag_name }}" }}'
