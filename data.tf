@@ -24,12 +24,5 @@ data "aws_subnet" "selected" {
 }
 
 data "aws_security_group" "selected" {
-  filter {
-    name   = "tag:Name"
-    values = [local.aws_security_group_name]
-  }
-}
-
-data "aws_iam_instance_profile" "selected" {
-  name = "ssm-tunnel"
+  name = local.aws_security_group_name
 }
