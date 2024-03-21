@@ -30,6 +30,6 @@ data "aws_security_group" "selected" {
   }
 }
 
-data "aws_iam_role" "selected" {
+data "aws_iam_instance_profile" "selected" {
   name = "ssm-tunnel"
 }
