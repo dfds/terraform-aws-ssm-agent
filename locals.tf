@@ -4,4 +4,18 @@ locals {
   aws_subnet_name          = "peering-a"
   aws_security_group_name  = "ssm-tunnel"
   aws_iam_instance_profile = "ssm-tunnel"
+
+  resource_owner_contact_email = var.resource_owner_contact_email != null ? {
+    "dfds.owner" = var.resource_owner_contact_email
+  } : {}
+  automation_initiator_pipeline_tag = var.pipeline_location != null ? { "dfds.automation.initiator.pipeline" : var.pipeline_location } : {}
+  all_tags = merge({
+    "dfds.env" : var.environment,
+    "dfds.cost.centre" : var.cost_centre,
+    "dfds.service.availability" : var.service_availability,
+    "dfds.library.name" : "blueprints",
+    "dfds.automation.tool" : "Terraform",
+    "dfds.automation.initiator.location" : var.automation_initiator_location,
+    Name = var.name
+  }, var.optional_tags, local.resource_owner_contact_email, local.automation_initiator_pipeline_tag)
 }
