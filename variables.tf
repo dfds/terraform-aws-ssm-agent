@@ -28,6 +28,19 @@ variable "sleep_schedule" {
   default     = "cron(0 18 ? * MON-FRI *)"
 }
 
+variable "sleep_schedule_is_enabled" {
+  description = <<EOF
+    Enable or disable the sleep schedule.
+    Valid Values: true, false
+    Notes:
+    - If set to true, the wakeup and sleep schedule will take effect based on be enabled schedules specified in wakeup_schedule and sleep_schedule variables.
+    - If set to false, the EC2 instance will be running 24/7.
+EOF
+  type        = bool
+  default     = true
+}
+
+
 ################################################################################
 # Resource tagging
 ################################################################################
@@ -108,6 +121,7 @@ variable "automation_initiator_location" {
     error_message = "Value for var.automation_initiator_location contains invalid characters or URL is malformed. See AWS [user guide](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) for more information. Example: https://github.com/dfds/terraform-aws-rds"
   }
 }
+
 variable "environment" {
   description = <<EOF
     Specify the staging environment.

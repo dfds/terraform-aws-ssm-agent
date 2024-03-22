@@ -34,6 +34,7 @@ resource "aws_scheduler_schedule" "start_instance" {
       ]
     })
   }
+  state = var.sleep_schedule_is_enabled ? "ENABLED" : "DISABLED"
 }
 resource "aws_scheduler_schedule" "stop_instance" {
   name                         = "${var.name}_stop_instance"
@@ -53,6 +54,7 @@ resource "aws_scheduler_schedule" "stop_instance" {
       InstanceIds = [aws_instance.this.id]
     })
   }
+  state = var.sleep_schedule_is_enabled ? "ENABLED" : "DISABLED"
 }
 
 resource "aws_iam_role" "scheduler" {
