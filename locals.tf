@@ -18,4 +18,6 @@ locals {
     "dfds.automation.initiator.location" : var.automation_initiator_location,
     Name = var.name
   }, var.optional_tags, local.resource_owner_contact_email, local.automation_initiator_pipeline_tag)
+
+  connection_command = "aws ssm start-session --region ${data.aws_region.current.name} --target ${aws_instance.this.id} --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters host='<your_database_endpoint>',portNumber='5432',localPortNumber='5432' --profile saml"
 }

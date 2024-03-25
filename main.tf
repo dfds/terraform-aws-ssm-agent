@@ -87,3 +87,5 @@ resource "aws_iam_role" "scheduler" {
   }
   tags = local.all_tags
 }
+
+data "aws_region" "current" {}
