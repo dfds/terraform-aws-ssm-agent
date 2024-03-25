@@ -26,3 +26,5 @@ data "aws_subnet" "selected" {
 data "aws_security_group" "selected" {
   name = local.aws_security_group_name
 }
+
+data "aws_region" "current" {}
