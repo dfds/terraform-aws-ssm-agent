@@ -40,6 +40,59 @@ EOF
   default     = true
 }
 
+variable "aws_ami_name" {
+  description = <<EOF
+    Optional. Specify the name of the AMI image to use for the EC2 instance
+    Valid Values: Any suitable EC2 instance filter string
+    Notes: The value will be used to filter the AMI image to use for the EC2 instance. By default it will use an appropriate value.
+EOF
+  default = "al2023-ami-2023.*-x86_64"
+  type = string
+
+}
+
+variable "aws_vpc_name" {
+  description = <<EOF
+    Optional. Specify the name of the VPC to use for the EC2 instance
+    Valid Values: Any valid VPC name
+    Notes: The value will be used to place the EC2 instance in the correct VPC. By default it will use an appropriate value.
+EOF
+  default = "peering"
+  type = string
+}
+
+variable "aws_subnet_name" {
+  description = <<EOF
+    Optional. Specify the name of the subnet to use for the EC2 instance
+    Valid Values: Any valid VPC Subnet name
+    Notes: The value will be used to place the EC2 instance in the correct subnet. By default it will use an appropriate value.
+EOF
+  default = "peering-a"
+  type = string
+}
+  
+variable "aws_security_group_name" {
+  description = <<EOF
+    Optional. Specify the name of the security group to use for the EC2 instance
+    Valid Values: Any valid AWS Security Group name
+    Notes: The value will be used to attach the correct security group to the EC2 instance. By default it will use an appropriate value.
+EOF
+  default = "ssm-tunnel"
+  type = string
+
+}
+
+variable "aws_iam_instance_profile" {
+  description = <<EOF
+    Optional. Specify the name of the IAM instance profile to use for the EC2 instance
+    Valid Values: Any valid IAM Instance Profile name
+    Notes: The value will be used to set the IAM instance profile for the EC2 instance. By default it will use an appropriate value.
+EOF
+  default = "ssm-tunnel"
+  type = string
+
+}
+
 
 ################################################################################
 # Resource tagging
