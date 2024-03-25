@@ -30,6 +30,7 @@ No modules.
 | [aws_scheduler_schedule.stop_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/scheduler_schedule) | resource |
 | [aws_scheduler_schedule_group.schedule_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/scheduler_schedule_group) | resource |
 | [aws_ami.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 | [aws_security_group.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/security_group) | data source |
 | [aws_subnet.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
 | [aws_vpc.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
@@ -54,5 +55,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_connection_command"></a> [connection\_command](#output\_connection\_command) | n/a |
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | n/a |
 <!-- END_TF_DOCS -->
