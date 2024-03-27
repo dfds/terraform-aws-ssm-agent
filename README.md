@@ -1,5 +1,6 @@
 # aws-modules-template
-Template for aws modules
+
+Terraform module for provisioning AWS SSM Agents
 
 # Documentation
 <!-- BEGIN_TF_DOCS -->
