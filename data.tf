@@ -3,7 +3,7 @@ data "aws_ami" "this" { # AMI image: Amazon Linux 2023 (free tier eligible)
   owners      = ["amazon"]
 
   filter {
-    name   = "name" # Amazon Linux 2023 AMI
+    name   = "name"
     values = [var.aws_ami_name]
   }
 }
