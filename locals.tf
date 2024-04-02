@@ -10,6 +10,8 @@ locals {
     "dfds.library.name" : "blueprints",
     "dfds.automation.tool" : "Terraform",
     "dfds.automation.initiator.location" : var.automation_initiator_location,
+    "dfds.other.blueprint.name" : "terraform-aws-ssm-agent",
+    "dfds.other.blueprint.version" : "1.0.2",
     Name = var.name
   }, var.optional_tags, local.resource_owner_contact_email, local.automation_initiator_pipeline_tag)
 
