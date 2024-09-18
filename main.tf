@@ -2,8 +2,6 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_region" "current" {}
-
 locals {
   regional_postfix = var.regional_postfix ? "-${data.aws_region.current.name}" : ""
 }
