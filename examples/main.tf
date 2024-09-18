@@ -15,4 +15,5 @@ module "ssm_agent_test" {
   cost_centre                  = "123456"
   service_availability         = "low"
   environment                  = "dev"
+  regional_postfix             = true # If you plan to install the SSM agent in multiple regions, set this to true
 }

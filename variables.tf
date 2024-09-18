@@ -199,7 +199,11 @@ EOF
 }
 
 variable "regional_postfix" {
-  description = "Enable region as postfix in resources names where applicable"
+  description = <<EOF
+    Enable region as postfix in resources names where applicable
+    Valid Values: true, false
+    Notes: If set to true, the region will be added as a postfix to the resource names.
+EOF
   type        = bool
-  default     = true
+  default     = false
 }
