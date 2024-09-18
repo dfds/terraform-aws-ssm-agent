@@ -197,3 +197,9 @@ EOF
     error_message = "Valid values for environment are: dev, test, staging, uat, training, prod."
   }
 }
+
+variable "regional_postfix" {
+  description = "Enable region as postfix in resources names where applicable"
+  type        = bool
+  default     = true
+}
