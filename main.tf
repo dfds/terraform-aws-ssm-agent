@@ -10,7 +10,7 @@ resource "aws_instance" "this" {
   ami                  = data.aws_ami.this.id
   instance_type        = "t3.micro"
   subnet_id            = data.aws_subnet.selected.id
-  iam_instance_profile = var.aws_iam_instance_profile
+  iam_instance_profile = "${var.aws_iam_instance_profile}${local.regional_postfix}"
   tags                 = local.all_tags
 }
 resource "aws_scheduler_schedule_group" "schedule_group" {
