@@ -2,11 +2,15 @@ terraform {
   backend "s3" {}
 }
 
+locals {
+  regional_postfix = var.regional_postfix ? "-${data.aws_region.current.name}" : ""
+}
+
 resource "aws_instance" "this" {
   ami                  = data.aws_ami.this.id
   instance_type        = "t3.micro"
   subnet_id            = data.aws_subnet.selected.id
-  iam_instance_profile = var.aws_iam_instance_profile
+  iam_instance_profile = "${var.aws_iam_instance_profile}${local.regional_postfix}"
   tags                 = local.all_tags
 }
 resource "aws_scheduler_schedule_group" "schedule_group" {
@@ -57,7 +61,7 @@ resource "aws_scheduler_schedule" "stop_instance" {
 }
 
 resource "aws_iam_role" "scheduler" {
-  name = "${var.name}_scheduler"
+  name = "${var.name}_scheduler${local.regional_postfix}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
